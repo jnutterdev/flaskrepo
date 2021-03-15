@@ -1,3 +1,3 @@
-# FlaskBlog
+# Flaskrepo
 
-A flask based web app for creating a simple blog, which uses jinja for templating and bootstrap for styling
+A flask app that will be used for managing and organizing github repos
