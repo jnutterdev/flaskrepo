@@ -14,7 +14,7 @@
 
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <a class="navbar-brand" href="{{ url_for('index')}}">FlaskBlog</a>
+        <a class="navbar-brand" href="{{ url_for('page_routes.index')}}">FlaskBlog</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,7 @@
                     <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url_for('create') }}" class="nav-link">New Post</a>
+                    <a href="{{ url_for('page_routes.create') }}" class="nav-link">New Post</a>
                 </li>
             </ul>
         </div>

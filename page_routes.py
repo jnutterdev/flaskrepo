@@ -1,6 +1,6 @@
-from flask import Blueprint, current_app
-from models import models
-
+from flask import Blueprint, render_template, request, url_for, flash, redirect
+from models import get_db_connection, get_post
+from werkzeug.exceptions import abort
 
 page_routes = Blueprint('page_routes', __name__)
 
@@ -8,7 +8,7 @@ page_routes = Blueprint('page_routes', __name__)
 
 @page_routes.route('/')
 def index():
-    conn = current_app.get_db_connection()
+    conn = get_db_connection()
     posts = conn.execute('SELECT * FROM posts').fetchall()
     conn.close()
     return render_template('index.html', posts=posts)
@@ -32,7 +32,7 @@ def create():
                          (title, content))
             conn.commit()
             conn.close()
-            return redirect(url_for('index'))
+            return redirect(url_for('page_routes.index'))
 
     return render_template('create.html')
 
@@ -65,4 +65,4 @@ def delete(id):
     conn.commit()
     conn.close()
     flash('"{}" was successfully deleted!'.format(post['title']))
-    return redirect(url_for('index'))
+    return redirect(url_for('page_routes.index'))
